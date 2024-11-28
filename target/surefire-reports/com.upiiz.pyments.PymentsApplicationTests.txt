@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.upiiz.pyments.PymentsApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.800 s -- in com.upiiz.pyments.PymentsApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.956 s -- in com.upiiz.pyments.PymentsApplicationTests
