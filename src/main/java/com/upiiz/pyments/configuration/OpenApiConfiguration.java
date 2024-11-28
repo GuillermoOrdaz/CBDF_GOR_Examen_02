@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Configuration;
                 ),
                 @Server(
                         description = "Servidor de Produccion",
-                        url = "https://localhost:8081/produccion"//Poner el link del render
+                        url = "https://cbdf-gor-examen-02.onrender.com"//Poner el link del render
                 )
         },
         tags = {
