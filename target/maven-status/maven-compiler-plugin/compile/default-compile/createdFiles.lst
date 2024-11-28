@@ -3,6 +3,7 @@ com\upiiz\pyments\configuration\OpenApiConfiguration.class
 com\upiiz\pyments\repositories\PymentsRepository.class
 com\upiiz\pyments\configuration\SecurityConfig.class
 com\upiiz\pyments\services\PymentsServices.class
+com\upiiz\pyments\configuration\CorsConfig.class
 com\upiiz\pyments\controllers\PymentsControllers.class
 com\upiiz\pyments\PymentsApplication.class
 com\upiiz\pyments\entities\CustomResponse.class
