@@ -36,6 +36,10 @@ import org.springframework.context.annotation.Configuration;
                 @Tag(
                         name = "pyments",
                         description = "EndPoint de los recursos"
+                ),
+                @Tag(
+                        name = "users",
+                        description = "EndPoint de los recursos"
                 )
         }
 )
