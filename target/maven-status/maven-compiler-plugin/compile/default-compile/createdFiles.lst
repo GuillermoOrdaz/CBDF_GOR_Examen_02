@@ -6,8 +6,8 @@ com\upiiz\pyments\repositories\UserRepository.class
 com\upiiz\pyments\configuration\SecurityConfig.class
 com\upiiz\pyments\services\PymentsServices.class
 com\upiiz\pyments\controllers\UserControllers.class
-com\upiiz\pyments\configuration\CorsConfig.class
 com\upiiz\pyments\entities\User.class
 com\upiiz\pyments\PymentsApplication.class
+com\upiiz\pyments\dto\PymentDTO.class
 com\upiiz\pyments\controllers\PymentsControllers.class
 com\upiiz\pyments\entities\CustomResponse.class

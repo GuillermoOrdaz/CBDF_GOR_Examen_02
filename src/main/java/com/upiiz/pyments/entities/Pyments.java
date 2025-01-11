@@ -3,16 +3,11 @@ package com.upiiz.pyments.entities;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,8 +34,8 @@ public class Pyments {
     @Column(name = "customer_id", nullable = false)
     private Long costumerId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    @JsonBackReference
-    private User user; 
+    // @ManyToOne
+    // @JoinColumn(name = "user_id", nullable = false)
+    // @JsonBackReference
+    // private User user; 
 }

@@ -36,14 +36,17 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "roles")
+    private String roles;
     
 
-     @JsonCreator
-    public User(@JsonProperty("id") long id) {
-        this.id = id;
-    }
+    //  @JsonCreator
+    // public User(@JsonProperty("id") long id) {
+    //     this.id = id;
+    // }
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Pyments> pyment = new ArrayList<>();
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    // @JsonManagedReference
+    // private List<Pyments> pyment = new ArrayList<>();
 }
