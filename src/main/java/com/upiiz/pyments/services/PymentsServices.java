@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 
 import com.upiiz.pyments.dto.PymentDTO;
@@ -24,23 +25,25 @@ public class PymentsServices {
 
     public List<PymentDTO> getAllPyments() {
         List<Pyments> pyments = (List<Pyments>) pymentsRepository.findAll();
-        System.out.println("Logs encontrados: " + pyments.size());
+        System.out.println("Pyments encontrados: " + pyments.size());
         return pyments.stream().map(this::convertToDTO).toList();
     }
 
     public PymentDTO getPymentById(Long id) {
         Optional<Pyments> pyments = pymentsRepository.findById(id);
-        if (pyments.isPresent()) {
-            return convertToDTO(pyments.get());
-        } else {
-            return null;
-        }
+        return pyments.map(this::convertToDTO).orElse(null);
     }
 
-    public PymentDTO updatePyment(PymentDTO pymentDTO) {
-        Pyments pyments = convertToEntity(pymentDTO);
-        Pyments updatedPyment = pymentsRepository.save(pyments);
-        return convertToDTO(updatedPyment);
+    public PymentDTO updatePyment(Long id, PymentDTO pymentDTO) {
+        Optional<Pyments> existingPyments = pymentsRepository.findById(id);
+        if(existingPyments.isPresent()) {
+            Pyments pyments = existingPyments.get();
+            pyments.setCostumerId(pymentDTO.getCostumerId());
+
+            Pyments updatedPyments = pymentsRepository.save(pyments);
+            return convertToDTO(updatedPyments);
+        }
+        return null;
     }
 
     public void deletePyment(Long id) {
@@ -49,13 +52,12 @@ public class PymentsServices {
 
     // Método para convertir un DTO a una entidad
     private Pyments convertToEntity(PymentDTO pymentDTO) {
-        Pyments pyments = new Pyments();
-        pyments.setId(pymentDTO.getId());
-        pyments.setPaymenDate(pymentDTO.getPaymentDate());
-        pyments.setAmount(pymentDTO.getAmount());
-        pyments.setCostumerId(pymentDTO.getCostumerId());
-        pyments.setId(pymentDTO.getCostumerId());
-        return pyments;
+        return Pyments.builder()
+                .id(pymentDTO.getId())
+                .paymenDate(pymentDTO.getPaymentDate())
+                .amount(pymentDTO.getAmount())
+                .costumerId(pymentDTO.getCostumerId())
+                .build();
     }
 
     // Método para convertir una entidad a un DTO
@@ -64,7 +66,6 @@ public class PymentsServices {
         pymentDTO.setId(pyments.getId());
         pymentDTO.setPaymentDate(pyments.getPaymenDate());
         pymentDTO.setAmount(pyments.getAmount());
-        pymentDTO.setCostumerId(pyments.getCostumerId());
         pymentDTO.setCostumerId(pyments.getCostumerId());
         return pymentDTO;
     }

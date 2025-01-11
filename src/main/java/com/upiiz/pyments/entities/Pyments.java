@@ -10,12 +10,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "pyments")
 public class Pyments {
@@ -25,7 +27,7 @@ public class Pyments {
     @Column(name = "payment_id")
     private Long id; 
 
-    @Column(name = "payment_date", nullable = false)
+    @Column(name = "payment_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDate paymenDate;
 
     @Column(name = "amount", nullable = false, precision = 10, scale = 2)
@@ -33,9 +35,4 @@ public class Pyments {
 
     @Column(name = "customer_id", nullable = false)
     private Long costumerId;
-
-    // @ManyToOne
-    // @JoinColumn(name = "user_id", nullable = false)
-    // @JsonBackReference
-    // private User user; 
 }

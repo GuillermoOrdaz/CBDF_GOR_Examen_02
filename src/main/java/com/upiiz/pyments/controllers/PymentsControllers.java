@@ -50,10 +50,10 @@ public class PymentsControllers {
         return ResponseEntity.ok(pymentsServices.createPyment(pymentDTO));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @PreAuthorize("hasAuthority('UPDATE')")
-    public ResponseEntity<PymentDTO> updatePyment(@RequestBody PymentDTO pymentDTO) {
-        return ResponseEntity.ok(pymentsServices.updatePyment(pymentDTO));
+    public ResponseEntity<PymentDTO> updatePyment(@RequestBody PymentDTO pymentDTO, @PathVariable Long id) {
+        return ResponseEntity.ok(pymentsServices.updatePyment(id, pymentDTO));
     }
 
     @DeleteMapping("/{id}")
